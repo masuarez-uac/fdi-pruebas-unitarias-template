@@ -27,4 +27,20 @@ public class TestHello {
      // undo the binding in System
      System.setOut(originalOut);
    }
+
+   @Test
+    public void testHelloName() {
+       PrintStream originalOut = System.out;
+       ByteArrayOutputStream bos = new ByteArrayOutputStream();
+       System.setOut(new PrintStream(bos));
+
+       // action
+       Hello.main(new String[]{"name"});
+
+       // assertion
+       assertEquals("Hello name!\n", bos.toString());
+
+       // undo the binding in System
+       System.setOut(originalOut);
+   }
 }
